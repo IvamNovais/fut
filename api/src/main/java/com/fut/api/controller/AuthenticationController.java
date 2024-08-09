@@ -51,18 +51,6 @@ public class AuthenticationController {
         this.repository.save(User.builder().login(data.login()).nome(data.nome()).password(crip).role("ROLE_USER").build());
         return ResponseEntity.ok().build();
     }
-    
-    @GetMapping("/gerenciamentoCadastrados")
-    public ResponseEntity<List<User>> gerenciamentoCadastrados(HttpServletRequest request) {
-        String token = request.getHeader("Authorization").replace("Bearer ", "");
-        String username = tokenService.validToken(token);
-
-        List<User> users = repository.findAll().stream()
-                .filter(user -> !user.getLogin().equals(username))
-                .collect(Collectors.toList());
-
-        return ResponseEntity.ok(users);
-    }
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity delete(@PathVariable Integer id){

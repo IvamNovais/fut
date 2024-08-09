@@ -12,10 +12,7 @@ const autheticationService = {
         const response = await api.post('/auth/register', data);
         return response.data;
     },
-    gerenciamentoCadastrados: async () => {
-        const response = await api.get('/auth/gerenciamentoCadastrados');
-        return response.data;
-    },
+
     delete: async (id) => {
         const response = await api.delete(`/auth/delete/${id}`);
         return response.data;
