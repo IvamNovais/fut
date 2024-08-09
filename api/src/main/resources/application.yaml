@@ -1,0 +1,22 @@
+server:
+  port: 9000
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/fut
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+
+flyway:
+  url: jdbc:postgresql://localhost:5432/fut
+  user: postgres
+  password: postgres
+  locations: classpath:db/migration
+web:
+  cors:
+    allowed-origins: "http://localhost:8080"
+    allowed-methods: GET, POST, PATCH, PUT, DELETE, OPTIONS, HEAD
+    max-age: 3600
+    allowed-headers: "Requestor-Type"
+    exposed-headers: "X-Get-Header"
